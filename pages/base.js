@@ -3,6 +3,12 @@ import styles from "../styles/Home.module.css";
 import { useContext } from "react";
 import { pizzaDetails } from "../src/utils/userPizzaDetails";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  buttonHover,
+  listItemHover,
+  listItemTransition,
+} from "../src/animations/hoverAnimation";
 
 function BasePage() {
   const [pizza, setPizza] = useContext(pizzaDetails);
@@ -13,29 +19,43 @@ function BasePage() {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      initial={{ translateX: "100vw" }}
+      animate={{ translateX: 0 }}
+      transition={{ delay: 0.5, type: "spring", stiffness: "150" }}
+    >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
         {bases.map((base) => {
           return (
-            <li key={base} onClick={() => addBase(base)}>
+            <motion.li
+              key={base}
+              onClick={() => addBase(base)}
+              whileHover={listItemHover}
+              transition={listItemTransition}
+            >
               {pizza.base === base ? (
                 <span className={styles.active}>{base}</span>
               ) : (
                 <span>{base}</span>
               )}
-            </li>
+            </motion.li>
           );
         })}
       </ul>
       {pizza.base && (
-        <div>
+        <motion.div
+          initial={{ translateX: "-100vw" }}
+          animate={{ translateX: 0 }}
+          transition={{ type: "tween" }}
+        >
           <Link href="/toppings" passHref>
-            <button>Next</button>
+            <motion.button whileHover={buttonHover}>Next</motion.button>
           </Link>
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

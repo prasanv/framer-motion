@@ -3,6 +3,8 @@ import styles from "../styles/Home.module.css";
 import { useContext } from "react";
 import { pizzaDetails } from "../src/utils/userPizzaDetails";
 import Link from "next/link";
+import { buttonHover } from "../src/animations/hoverAnimation";
+import { motion } from "framer-motion";
 
 function OrderPage() {
   const [pizza, setPizza] = useContext(pizzaDetails);
@@ -15,9 +17,12 @@ function OrderPage() {
         <div key={topping}>{topping}</div>
       ))}
       <Link href="/" passHref>
-        <button onClick={() => setPizza({ base: "", toppings: [] })}>
+        <motion.button
+          onClick={() => setPizza({ base: "", toppings: [] })}
+          whileHover={buttonHover}
+        >
           Home
-        </button>
+        </motion.button>
       </Link>
     </div>
   );

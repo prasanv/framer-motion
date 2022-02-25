@@ -3,6 +3,12 @@ import styles from "../styles/Home.module.css";
 import { useContext } from "react";
 import { pizzaDetails } from "../src/utils/userPizzaDetails";
 import Link from "next/link";
+import {
+  buttonHover,
+  listItemHover,
+  listItemTransition,
+} from "../src/animations/hoverAnimation";
+import { motion } from "framer-motion";
 
 function ToppingsPage() {
   const [pizza, setPizza] = useContext(pizzaDetails);
@@ -31,20 +37,28 @@ function ToppingsPage() {
       <ul>
         {toppings.map((topping) => {
           return (
-            <li key={topping} onClick={() => addTopping(topping)}>
+            <motion.li
+              key={topping}
+              onClick={() => addTopping(topping)}
+              whileHover={listItemHover}
+              transition={listItemTransition}
+            >
               {pizza.toppings.includes(topping) ? (
                 <span className={styles.active}>{topping}</span>
               ) : (
                 <span>{topping}</span>
               )}
-            </li>
+            </motion.li>
           );
         })}
       </ul>
-
-      <Link href="/order" passHref>
-        <button>Order</button>
-      </Link>
+      {!!pizza.toppings.length && (
+        <div>
+          <Link href="/order" passHref>
+            <motion.button whileHover={buttonHover}>Order</motion.button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

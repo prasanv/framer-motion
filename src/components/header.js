@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 import styles from "../../styles/Home.module.css";
+import { motion } from "framer-motion";
 
 function Header({ children }) {
   return (
@@ -27,7 +28,14 @@ function Header({ children }) {
         </div>
         <div className={styles.title}>
           <Link href="/" passHref>
-            <h1 className={styles.titleHeading}>Pizza Point</h1>
+            <motion.h1
+              className={styles.titleHeading}
+              initial={{ y: "-200px" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5, type: "spring", stiffness: "200" }}
+            >
+              Pizza Point
+            </motion.h1>
           </Link>
         </div>
       </header>
