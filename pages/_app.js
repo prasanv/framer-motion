@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import Header from "../src/components/header";
+import UserPizzaDetails from "../src/utils/userPizzaDetails";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Header>
+      <UserPizzaDetails>
+        <Component {...pageProps} />
+      </UserPizzaDetails>
+    </Header>
+  );
 }
 
-export default MyApp
+export default MyApp;
