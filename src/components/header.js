@@ -3,8 +3,12 @@ import Link from "next/link";
 import React from "react";
 import styles from "../../styles/Home.module.css";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { pizzaDetails } from "../utils/userPizzaDetails";
 
 function Header({ children }) {
+  const [pizza, setPizza] = useContext(pizzaDetails);
+
   return (
     <div>
       <Head>
@@ -33,6 +37,7 @@ function Header({ children }) {
               initial={{ y: "-200px" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.5, type: "spring", stiffness: "200" }}
+              onClick={() => setPizza({ base: "", toppings: [] })}
             >
               Pizza Point
             </motion.h1>

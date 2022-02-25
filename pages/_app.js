@@ -4,11 +4,11 @@ import UserPizzaDetails from "../src/utils/userPizzaDetails";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Header>
-      <UserPizzaDetails>
+    <UserPizzaDetails>
+      <Header>
         <Component {...pageProps} />
-      </UserPizzaDetails>
-    </Header>
+      </Header>
+    </UserPizzaDetails>
   );
 }
 
