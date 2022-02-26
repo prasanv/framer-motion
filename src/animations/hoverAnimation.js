@@ -12,5 +12,5 @@ export const listItemHover = {
 
 export const listItemTransition = {
   type: "spring",
-  stiffness: "200",
+  stiffness: "500",
 };

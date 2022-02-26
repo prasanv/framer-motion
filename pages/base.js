@@ -10,6 +10,28 @@ import {
   listItemTransition,
 } from "../src/animations/hoverAnimation";
 
+// Variants allows the prop structure to propagate through the children
+// In this case containerVariants is parent and its props structure will propagate through its children nextButtonVariants
+const containerVariants = {
+  hidden: {
+    translateX: "100vw",
+  },
+  visible: {
+    translateX: 0,
+    transition: { delay: 0.5, type: "spring", stiffness: "150" },
+  },
+};
+
+const nextButtonVariants = {
+  hidden: {
+    translateX: "-100vw",
+  },
+  visible: {
+    translateX: 0,
+    transition: { type: "tween" },
+  },
+};
+
 function BasePage() {
   const [pizza, setPizza] = useContext(pizzaDetails);
   const bases = ["Classic", "Thin & Crispy", "Thick Crust"];
@@ -21,9 +43,9 @@ function BasePage() {
   return (
     <motion.div
       className={styles.container}
-      initial={{ translateX: "100vw" }}
-      animate={{ translateX: 0 }}
-      transition={{ delay: 0.5, type: "spring", stiffness: "150" }}
+      variants={containerVariants}
+      initial="hidden" // prop will propagate through children
+      animate="visible" // prop will propagate through children
     >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
@@ -46,9 +68,7 @@ function BasePage() {
       </ul>
       {pizza.base && (
         <motion.div
-          initial={{ translateX: "-100vw" }}
-          animate={{ translateX: 0 }}
-          transition={{ type: "tween" }}
+          variants={nextButtonVariants} // Note: There is no props. Props structure propagate from parent.
         >
           <Link href="/toppings" passHref>
             <motion.button whileHover={buttonHover}>Next</motion.button>

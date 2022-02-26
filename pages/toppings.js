@@ -10,6 +10,18 @@ import {
 } from "../src/animations/hoverAnimation";
 import { motion } from "framer-motion";
 
+// Variants allows the prop structure to propagate through the children
+// In this case containerVariants is parent and its props structure will propagate through its children nextButtonVariants
+const containerVariants = {
+  hidden: {
+    translateX: "100vw",
+  },
+  visible: {
+    translateX: 0,
+    transition: { delay: 0.5, type: "spring", stiffness: "150" },
+  },
+};
+
 function ToppingsPage() {
   const [pizza, setPizza] = useContext(pizzaDetails);
   let toppings = [
@@ -32,7 +44,12 @@ function ToppingsPage() {
   };
 
   return (
-    <div className={styles.container}>
+    <motion.div
+      className={styles.container}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <h3>Step 2: Choose Toppings</h3>
       <ul>
         {toppings.map((topping) => {
@@ -59,7 +76,7 @@ function ToppingsPage() {
           </Link>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

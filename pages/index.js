@@ -8,7 +8,7 @@ export default function Home() {
     <motion.div
       className={styles.container}
       initial={{ translateY: "-600px" }}
-      animate={{ translateY: "200px" }}
+      animate={{ translateY: "10px" }}
       transition={{ duration: 0.75 }}
     >
       <main className={styles.main}>
