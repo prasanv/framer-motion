@@ -25,6 +25,9 @@
   justify-content: center;
   align-items: center;
 }
+.marquee {
+  text-align: center;
+}
 
 /* Header */
 header .pizza {
