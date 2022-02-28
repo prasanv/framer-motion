@@ -118,3 +118,7 @@ li span.active::before {
   background: white;
   border-radius: 50%;
 }
+
+.logo {
+  cursor: pointer;
+}

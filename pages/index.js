@@ -4,7 +4,6 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { buttonHover } from "../src/animations/hoverAnimation";
-import Loader from "../src/components/loader";
 
 export default function Home() {
   const [compStatus, setCompStatus] = useState(true);
@@ -60,12 +59,22 @@ export default function Home() {
                 >
                   Create Your Pizza
                 </motion.button>
+                <motion.button
+                  whileHover={buttonHover}
+                  onClick={() => {
+                    setCompStatus(false);
+                    setTimeout(() => {
+                      router.push("/test");
+                    }, 250);
+                  }}
+                >
+                  Play Animations
+                </motion.button>
               </motion.div>
             </main>
           </motion.div>
         )}
       </AnimatePresence>
-      <Loader></Loader>
     </>
   );
 }

@@ -57,7 +57,7 @@ header h1 {
 
 button {
   color: white;
-  padding: 10px 30px;
+  padding: 20px 30px;
   font-size: 1em;
   background: transparent;
   border-radius: 50px;
@@ -65,4 +65,5 @@ button {
   margin: 40px auto 0;
   cursor: pointer;
   opacity: 0.7;
+  display: block;
 }

@@ -31,7 +31,17 @@ function Header({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
-        <div className={styles.logo}>
+        <motion.div
+          className={styles.logo}
+          drag // This prop make the SVG draggable
+          dragConstraints={{ left: 0, top: 0, right: 50, bottom: 100 }} // you cannot drag beyond these dimensions
+          // dragElastic: lower the number harder to drag, higher the number easier to drag
+          // 0 : you can not drag beyond the dragConstraints dimensions
+          // (0.1-0.9) : lower the number harder to drag around
+          // 1 : drags along with the mouse pointer and easier to drag
+          // Above 1 : drags beyond the mouse pointer and easier to drag
+          dragElastic={1.1}
+        >
           <motion.svg
             className={styles.pizza}
             variants={svgVariants}
@@ -51,7 +61,7 @@ function Header({ children }) {
               d="M50 30 L50 -10 C50 -10 90 -10 90 30 Z"
             />
           </motion.svg>
-        </div>
+        </motion.div>
         <div className={styles.title}>
           <Link href="/" passHref>
             <motion.h1
