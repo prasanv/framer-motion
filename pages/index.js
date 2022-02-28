@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { buttonHover } from "../src/animations/hoverAnimation";

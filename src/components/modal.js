@@ -1,23 +1,41 @@
 import React from "react";
 import styles from "../../styles/Home.module.css";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { buttonHover } from "../animations/hoverAnimation";
+import Link from "next/link";
 
-function Modal() {
+function Modal({ setShowModal }) {
   return (
-    <div className={styles.backdrop}>
-      <motion.div
-        className={styles.modal}
-        animate={{ translateY: "25vh" }}
-        transition={{ ease: "easeInOut" }}
-      >
-        <p>Want to order another Pizza!</p>
-        <Link href="/" passHref>
-          <motion.button whileHover={buttonHover}>Start Again</motion.button>
-        </Link>
-      </motion.div>
-    </div>
+    <motion.div
+      setShowModal={setShowModal}
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: {
+          ease: "easeInOut",
+          duration: 1,
+        },
+      }}
+    >
+      <div className={styles.backdrop}>
+        <motion.div
+          className={styles.modal}
+          initial={{ opacity: 0 }}
+          animate={{
+            translateY: "25vh",
+            opacity: 1,
+            transition: {
+              translateY: { ease: "easeInOut", duration: 0.5 },
+            },
+          }}
+        >
+          <p>Want to order another Pizza!</p>
+          <Link href="/" passHref>
+            <motion.button whileHover={buttonHover}>Start Again</motion.button>
+          </Link>
+        </motion.div>
+      </div>
+    </motion.div>
   );
 }
 
