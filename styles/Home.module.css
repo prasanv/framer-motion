@@ -110,3 +110,11 @@ li span.active::before {
   border-radius: 30px;
   font-weight: bold;
 }
+
+.loader {
+  height: 10px;
+  width: 10px;
+  margin: 100px auto;
+  background: white;
+  border-radius: 50%;
+}

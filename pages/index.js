@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { buttonHover } from "../src/animations/hoverAnimation";
+import Loader from "../src/components/loader";
 
 export default function Home() {
   const [compStatus, setCompStatus] = useState(true);
@@ -37,7 +38,7 @@ export default function Home() {
               <motion.h2
                 animate={{
                   fontSize: "45px",
-                  rotateY: 360,
+                  rotateX: 360,
                 }}
                 transition={{ delay: 0.75, duration: 1 }}
               >
@@ -64,6 +65,7 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+      <Loader></Loader>
     </>
   );
 }
