@@ -18,7 +18,7 @@ const containerVariants = {
   },
   visible: {
     translateX: 0,
-    transition: { delay: 0.5, type: "spring", stiffness: "150" },
+    transition: { delay: 0.3, type: "spring", stiffness: "150" },
   },
 };
 
