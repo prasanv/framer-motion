@@ -15,3 +15,11 @@ Delete the `node_modules` folder. If no folder, then just run the below command.
 ```
 npm install
 ```
+
+## Resources
+
+Framer Introduction [https://www.framer.com/docs/introduction/](https://www.framer.com/docs/introduction/)
+
+Animation [https://www.framer.com/docs/animation/](https://www.framer.com/docs/animation/)
+
+Animation transition [https://www.framer.com/docs/transition/](https://www.framer.com/docs/transition/)
