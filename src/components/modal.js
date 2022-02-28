@@ -3,8 +3,12 @@ import styles from "../../styles/Home.module.css";
 import { motion } from "framer-motion";
 import { buttonHover } from "../animations/hoverAnimation";
 import Link from "next/link";
+import { pizzaDetails } from "../utils/userPizzaDetails";
+import { useContext } from "react";
 
 function Modal({ setShowModal }) {
+  const [pizza, setPizza] = useContext(pizzaDetails);
+
   return (
     <motion.div
       setShowModal={setShowModal}
@@ -31,7 +35,12 @@ function Modal({ setShowModal }) {
         >
           <p>Want to order another Pizza!</p>
           <Link href="/" passHref>
-            <motion.button whileHover={buttonHover}>Start Again</motion.button>
+            <motion.button
+              whileHover={buttonHover}
+              onClick={() => setPizza({ base: "", toppings: [] })}
+            >
+              Start Again
+            </motion.button>
           </Link>
         </motion.div>
       </div>
