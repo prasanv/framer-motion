@@ -10,7 +10,8 @@ Open [http://localhost:6060](http://localhost:6060) with your browser to see the
 
 ## Troubleshooting
 
-- Delete the `node_modules` folder. If no folder, then just the below command.
-- ```
+Delete the `node_modules` folder. If no folder, then just run the below command.
+
+```
    npm install
-  ```
+```
