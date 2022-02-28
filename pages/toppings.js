@@ -44,39 +44,41 @@ function ToppingsPage() {
   };
 
   return (
-    <motion.div
-      className={styles.container}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      <h3>Step 2: Choose Toppings</h3>
-      <ul>
-        {toppings.map((topping) => {
-          return (
-            <motion.li
-              key={topping}
-              onClick={() => addTopping(topping)}
-              whileHover={listItemHover}
-              transition={listItemTransition}
-            >
-              {pizza.toppings.includes(topping) ? (
-                <span className={styles.active}>{topping}</span>
-              ) : (
-                <span>{topping}</span>
-              )}
-            </motion.li>
-          );
-        })}
-      </ul>
-      {!!pizza.toppings.length && (
-        <div>
-          <Link href="/order" passHref>
-            <motion.button whileHover={buttonHover}>Order</motion.button>
-          </Link>
-        </div>
-      )}
-    </motion.div>
+    <div className={styles.toppings}>
+      <motion.div
+        className={styles.container}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <h3>Step 2: Choose Toppings</h3>
+        <ul>
+          {toppings.map((topping) => {
+            return (
+              <motion.li
+                key={topping}
+                onClick={() => addTopping(topping)}
+                whileHover={listItemHover}
+                transition={listItemTransition}
+              >
+                {pizza.toppings.includes(topping) ? (
+                  <span className={styles.active}>{topping}</span>
+                ) : (
+                  <span>{topping}</span>
+                )}
+              </motion.li>
+            );
+          })}
+        </ul>
+        {!!pizza.toppings.length && (
+          <div>
+            <Link href="/order" passHref>
+              <motion.button whileHover={buttonHover}>Order</motion.button>
+            </Link>
+          </div>
+        )}
+      </motion.div>
+    </div>
   );
 }
 

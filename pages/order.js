@@ -41,41 +41,35 @@ function OrderPage() {
   }, 4000);
 
   return (
-    <div className={styles.container}>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <AnimatePresence>
-          {showOrderDetails && (
-            <motion.div
-              exit={{ translateY: -1000 }}
-              transition={{ duration: 0.5 }}
-            >
-              <motion.p variants={childVariants}>
-                You ordered a {pizza.base} pizza with:
-              </motion.p>
-              {pizza.toppings.map((topping) => (
-                <motion.div key={topping} variants={childVariants}>
-                  {topping}
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-        <motion.h2 className={styles.orderHeading} variants={childVariants}>
-          Thank you for your order :)
-        </motion.h2>
-      </motion.div>
-      <Link href="/" passHref>
-        <motion.button
-          onClick={() => setPizza({ base: "", toppings: [] })}
-          whileHover={buttonHover}
+    <div className={styles.order}>
+      <div className={styles.container}>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          Home
-        </motion.button>
-      </Link>
+          <motion.h2 className={styles.orderHeading} variants={childVariants}>
+            Thank you for your order :)
+          </motion.h2>
+          <AnimatePresence>
+            {showOrderDetails && (
+              <motion.div
+                exit={{ translateY: -1000 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.p variants={childVariants}>
+                  You ordered a {pizza.base} pizza with:
+                </motion.p>
+                {pizza.toppings.map((topping) => (
+                  <motion.div key={topping} variants={childVariants}>
+                    {topping}
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </div>
   );
 }

@@ -41,41 +41,43 @@ function BasePage() {
   };
 
   return (
-    <motion.div
-      className={styles.container}
-      variants={containerVariants}
-      initial="hidden" // prop will propagate through children
-      animate="visible" // prop will propagate through children
-    >
-      <h3>Step 1: Choose Your Base</h3>
-      <ul>
-        {bases.map((base) => {
-          return (
-            <motion.li
-              key={base}
-              onClick={() => addBase(base)}
-              whileHover={listItemHover}
-              transition={listItemTransition}
-            >
-              {pizza.base === base ? (
-                <span className={styles.active}>{base}</span>
-              ) : (
-                <span>{base}</span>
-              )}
-            </motion.li>
-          );
-        })}
-      </ul>
-      {pizza.base && (
-        <motion.div
-          variants={nextButtonVariants} // Note: There is no props. Props structure propagate from parent.
-        >
-          <Link href="/toppings" passHref>
-            <motion.button whileHover={buttonHover}>Next</motion.button>
-          </Link>
-        </motion.div>
-      )}
-    </motion.div>
+    <div className={styles.base}>
+      <motion.div
+        className={styles.container}
+        variants={containerVariants}
+        initial="hidden" // prop will propagate through children
+        animate="visible" // prop will propagate through children
+      >
+        <h3>Step 1: Choose Your Base</h3>
+        <ul>
+          {bases.map((base) => {
+            return (
+              <motion.li
+                key={base}
+                onClick={() => addBase(base)}
+                whileHover={listItemHover}
+                transition={listItemTransition}
+              >
+                {pizza.base === base ? (
+                  <span className={styles.active}>{base}</span>
+                ) : (
+                  <span>{base}</span>
+                )}
+              </motion.li>
+            );
+          })}
+        </ul>
+        {pizza.base && (
+          <motion.div
+            variants={nextButtonVariants} // Note: There is no props. Props structure propagate from parent.
+          >
+            <Link href="/toppings" passHref>
+              <motion.button whileHover={buttonHover}>Next</motion.button>
+            </Link>
+          </motion.div>
+        )}
+      </motion.div>
+    </div>
   );
 }
 
