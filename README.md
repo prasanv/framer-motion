@@ -13,5 +13,5 @@ Open [http://localhost:6060](http://localhost:6060) with your browser to see the
 Delete the `node_modules` folder. If no folder, then just run the below command.
 
 ```
-   npm install
+npm install
 ```
